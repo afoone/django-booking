@@ -19,11 +19,11 @@ __all__ = (
 )
 
 
+'''
+A generic model for adding simple, arbitrary notes to other models such as
+``Event`` or ``Occurrence``.
+'''
 class Note(models.Model):
-    '''
-    A generic model for adding simple, arbitrary notes to other models such as
-    ``Event`` or ``Occurrence``.
-    '''
     note = models.TextField(_('note'))
     created = models.DateTimeField(_('created'), auto_now_add=True)
     content_type = models.ForeignKey(
@@ -41,11 +41,10 @@ class Note(models.Model):
     def __str__(self):
         return self.note
 
-
+'''
+Simple ``Event`` classifcation.
+'''
 class EventType(models.Model):
-    '''
-    Simple ``Event`` classifcation.
-    '''
     abbr = models.CharField(_('abbreviation'), max_length=4, unique=True)
     label = models.CharField(_('label'), max_length=50)
 
@@ -57,10 +56,10 @@ class EventType(models.Model):
         return self.label
 
 
+'''
+Container model for general metadata and associated ``Occurrence`` entries.
+'''
 class Event(models.Model):
-    '''
-    Container model for general metadata and associated ``Occurrence`` entries.
-    '''
     title = models.CharField(_('title'), max_length=32)
     description = models.CharField(_('description'), max_length=100)
     event_type = models.ForeignKey(
