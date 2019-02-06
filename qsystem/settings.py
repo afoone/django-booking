@@ -16,10 +16,20 @@ sys.path.extend([
 ])
 
 DEBUG = True
-DATABASES = {'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': 'karate.db',
-}}
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'booking',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'db',   
+        'PORT': '3306',
+    }
+}
+
+
 LANGUAGES = (('en', 'English'),)
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
